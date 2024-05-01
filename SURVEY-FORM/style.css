@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: linear-gradient(to bottom, #faaca8, #ddd6f3);
+    background-repeat: no-repeat;
+    height: fit-content;
+    padding: 40px;
+    font-family: cursive;
+}
+
+h1{
+    color: #f70042;
+    letter-spacing: 2px;
+}
+
+#description{
+    color: rgba(255,255, 255,0.7);
+    font-size: 14px;
+}
+
+form{
+    padding: 0 auto;
+    margin-top: 20px;
+    width: 100%;
+    height: fit-content;
+    background-color: rgba(255,255, 255,0.3);
+    box-shadow: 2px 2px 10px 30px rgba(255,255, 255,0.3);
+    color: #f70042;
+}
+
+.account-cont input{
+    display: block;
+    padding: 10px;
+    width: 50%;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255,0.8);
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.cont-age-role{
+    width: 100%;
+    height: fit-content;
+    margin-top: 10px;
+}
+.cont-age-role input{
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 100px;
+    display: block;
+    border-radius: 5px;
+    border: none;   
+    background-color: rgba(255, 255, 255,0.8);
+}
+
+.cont-age-role select{
+    display: block;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255,0.8);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.ask{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: fit-content;
+}
+
+.ask .ask-input{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cont-check{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.cont-check .check-1{
+    width: 50%;
+    display: grid;
+    margin-top: 10px;
+}
+
+.cont-check .check-2{
+    width: 50%;
+    display: grid;
+    margin-top: 10px;
+}
+
+.textarea{
+    margin-top: 20px;
+}
+
+.textarea textarea{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 50%;
+    padding: 15px 15px 90px 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255,0.8);
+}
+
+.textarea input{
+    display: block;
+    padding: 15px;
+    width: 65%;
+    border: none;
+    background-color: rgb(44, 202, 149);
+    border-radius: 10px;
+    color: #ddd6f3;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .textarea textarea {
+    width: 100%;
+  }
+
+  .textarea input{
+    width: 100%;
+  }
+}

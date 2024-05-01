@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Survey A Form</title>
+</head>
+
+<body>
+    <h1 id="title"> freeCodeCamp Survey Form </h1>
+
+    <p id="description">Thank you for taking the time to help us improve the platform</p>
+    <br>
+
+    <form action="" id="survey-form">
+      <div class="account-cont">
+       <div class="name">
+        <label for="text" id="name-label"> Name <input type="text" id="name" name="name" placeholder="Enter Your Name"
+                required>
+        </label>
+       </div>
+
+       <div class="email">
+        <label for="email" id="email-label">Email <input type="email" id="email" name="email" placeholder="Enter Your Email"
+                required></label>
+       </div>
+      </div>
+
+      <div class="cont-age-role">
+        <div class="age">
+            <label for="number" id="number-label">Age(opsional) <input type="number" id="number" min="13" max="120"
+                    placeholder="Age"></label>
+        </div>
+        <div class="role">
+            <label for="role">Which option best describes your current role?</label>
+            <select name="role" id="dropdown">
+                <option value="">Select Current Role</option>
+                <option value="1">Student</option>
+                <option value="2">Full Time Job</option>
+                <option value="3">Full Time Leaner</option>
+                <option value="4">Prefer not to say</option>
+                <option value="5">Other</option>
+            </select>
+        </div>
+      </div>
+
+      <div class="ask">
+        <p>Would you recommend freeCodeCamp to a friend?</p>
+            <div class="ask-input">
+                <label for="ask">
+                    <input name="ask" value="1" type="radio">Definitely
+                </label>
+                <label for="ask">
+                    <input name="ask" value="2" type="radio">Maybe
+                </label>
+                <label for="ask">
+                    <input name="ask" value="3" type="radio">Not sure
+                </label>
+            </div>
+
+      </div>
+
+      <dic class="check">
+        <p>
+            What would you like to see improved? (Check all that apply)
+        </p>
+
+        <div class="cont-check">
+            <div class="check-1">
+                <label for="frontend">
+                    <input name="frontend" value="1" type="checkbox">Front-end Projects
+                </label>
+                <label for="beckend">
+                    <input name="beckend" value="2" type="checkbox">Back-end Projects
+                </label>
+                <label for="data-vitualization">
+                    <input name="data-vitualization" value="3" type="checkbox">Data Visualization
+                </label>
+                <label for="challange">
+                    <input name="challange" value="4" type="checkbox">Challenges
+                </label>
+                <label for="open-source">
+                    <input name="open-source" value="5" type="checkbox">Open Source Community
+                </label>
+                <label for="gitter">
+                    <input name="gitter" value="6" type="checkbox">Gitter help rooms
+                </label>
+            </div>
+            <div class="check-2">
+                <label for="videos">
+                    <input name="videos" value="7" type="checkbox">Videos
+                </label>
+                <label for="meetups">
+                    <input name="meetups" value="8" type="checkbox">City Meetups
+                </label>
+                <label for="wiki">
+                    <input name="wiki" value="9" type="checkbox">Wiki
+                </label>
+                <label for="forum">
+                    <input name="forum" value="10" type="checkbox">Forum
+                </label>
+                <label for="Additional">
+                    <input name="Additional" value="11" type="checkbox">Additional Courses
+                </label>
+            
+            </div>
+        </div>
+       
+      </dic>
+
+      <div class="textarea">
+        <p>
+            Any comments or suggestions?
+        </p>
+        <textarea name="textarea" id="textarea" cols="30" rows="3" placeholder="Enter Your Comment Here.."></textarea>
+        <input type="submit" id="submit">
+      </div>
+    </form>
+
+
+</body>
+
+</html>
