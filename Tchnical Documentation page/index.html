@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Documentation Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- this nav list of main title of content -->
+    <nav id="navbar">
+        <header>
+            <h1>Sphinx for Kernel documentation</h1>
+        </header>
+        <ul>
+            <li><a href="#Using_Sphinx_for_kernel_documentation" class="nav-link">Using Sphinx for kernel documentation</a></li>
+            <li><a href="#sphinx_install" class="nav-link">sphinx install</a></li>
+            <li><a href="#image_output" class="nav-link"> image output</a></li>
+            <li><a href="#sphinx_build" class="nav-link"> sphinx build</a></li>
+            <li><a href="#writing_documentation" class="nav-link"> writing documentation</a></li>
+            <li><a href="#Specific_guidelines_for_the_kernel_documentation" class="nav-link"> Specific guidelines for the kernel documentation</a></li>
+            <li><a href="#the_c_domain" class="nav-link"> the c domain</a></li>
+            <li><a href="#Reference" class="nav-link"> Reference</a></li>
+        </ul>
+    </nav>
+    <!-- end of navbar list  -->
+
+
+    <main id="main-doc">
+        <!-- start content -->
+        <section class="main-section" id="Using_Sphinx_for_kernel_documentation">
+            <header>
+                Using Sphinx for kernel documentation
+            </header>
+            <p>
+                The Linux kernel uses Sphinx to generate pretty documentation from reStructuredText files under Documentation. To build
+                the documentation in HTML or PDF formats, use make htmldocs or make pdfdocs. The generated documentation is placed in
+                Documentation/output.
+                The reStructuredText files may contain directives to include structured documentation comments, or kernel-doc comments,
+                from source files. Usually these are used to describe the functions and types and design of the code. The kernel-doc
+                comments have some special structure and formatting, but beyond that they are also treated as reStructuredText.               
+                Finally, there are thousands of plain text documentation files scattered around Documentation. Some of these will likely
+                be converted to reStructuredText over time, but the bulk of them will remain in plain text.
+            </p>
+        </section>
+
+        <section class="main-section" id="sphinx_install">
+            <header>
+                sphinx install
+            </header>
+            <p>
+                The ReST markups currently used by the Documentation/ files are meant to be built with Sphinx version 1.7 or higher.               
+                There's a script that checks for the Sphinx requirements. Please see <a href="http://" target="_blank" rel="noopener noreferrer">Checking for Sphinx dependencies</a> for further
+                details.               
+                Most distributions are shipped with Sphinx, but its toolchain is fragile, and it is not uncommon that upgrading it or
+                some other Python packages on your machine would cause the documentation build to break.
+                A way to avoid that is to use a different version than the one shipped with your distributions. In order to do so, it is
+                recommended to install Sphinx inside a virtual environment, using <span>virtualenv-3</span> or <span>virtualenv</span>, depending on how your
+                distribution packaged Python 3.
+            </p>
+<pre>
+<code class="note">
+        Note:      
+            It is recommended to use the 
+            RTD theme html output.
+            Depending on the Sphversion, 
+            it should be installed
+            separately, with 
+            pip instsphinx_rtd_theme.
+</code>
+</pre>
+            <p>In summary, if you want to install Sphinx version 2.4.4, you should do:</p>
+            <pre>
+            <code class="code">
+        $ virtualenv sphinx_2.4.4
+        $ . sphinx_2.4.4/bin/activate
+        (sphinx_2.4.4) $ pip install -r 
+        Documentationsphinx/requirements.txt
+            </code>
+            </pre>
+            <p>After running . sphinx_2.4.4/bin/activate, the prompt will change, in order to indicate that you're using the new
+            environment. If you open a new shell, you need to rerun this command to enter again at the virtual environment before
+            building the documentation.</p>
+        </section>
+
+        <section class="main-section" id="image_output">
+            <header>
+               image output
+            </header>
+            <p>The kernel documentation build system contains an extension that handles images on both GraphViz and SVG formats.</p><br>
+            <p>For it to work, you need to install both GraphViz and ImageMagick packages. If those packages are not installed, the
+            build system will still build the documentation, but won't include any images at the output.</p>
+        </section>
+
+
+        <section class="main-section" id="sphinx_build">
+            <header>
+                sphinx build
+            </header>
+                <p>The usual way to generate the documentation is to run make htmldocs or make pdfdocs. There are also other formats
+                available: see the documentation section of make help. The generated documentation is placed in format-specific
+                subdirectories under Documentation/output</p>
+                <p>To generate documentation, Sphinx (sphinx-build) must obviously be installed. For PDF output you'll also need XeLaTeX
+                and convert(1) from ImageMagick <a href="https://www.imagemagick.org" target="_blank">(https://www.imagemagick.org)</a>.1 All of these are widely available and packaged in
+                distributions.
+                To pass extra options to Sphinx, you can use the SPHINXOPTS make variable. For example, use make SPHINXOPTS=-v htmldocs
+                to get more verbose output.
+                It is also possible to pass an extra DOCS_CSS overlay file, in order to customize the html layout, by using the DOCS_CSS
+                make variable.</p>
+                <p>By default, the "Alabaster" theme is used to build the HTML documentation; this theme is bundled with Sphinx and need
+                not be installed separately. The Sphinx theme can be overridden by using the DOCS_THEME make variable.
+                There is another make variable SPHINXDIRS, which is useful when test building a subset of documentation. For example,
+                you can build documents under Documentation/doc-guide by running make SPHINXDIRS=doc-guide htmldocs. The documentation
+                section of make help will show you the list of subdirectories you can specify.</p>
+                <p>To remove the generated documentation, run make cleandocs.</p>
+                <pre>
+                    <code>
+            Having inkscape(1) from Inkscape 
+            <a href="https:/inkscape.org" target="_blank" rel="noopener noreferrer">(https:/inkscape.org)</a> as well would 
+            improve the qualityof images embedded in PDF
+            documents, especially for kernel 
+            releases 5.18and later.
+                    </code>
+                </pre>
+        </section>
+
+        <section class="main-section" id="writing_documentation">
+            <header>
+                writing documentation
+            </header>
+            <p>Adding new documentation can be as simple as:</p>
+            <ol>
+                <li>Add a new .rst file somewhere under Documentation.</li>
+                <li>Refer to it from the Sphinx main TOC tree in Documentation/index.rst.</li>
+            </ol>
+            <p>This is usually good enough for simple documentation (like the one you're reading right now), but for larger documents
+            it may be advisable to create a subdirectory (or use an existing one). For example, the graphics subsystem documentation
+            is under Documentation/gpu, split to several .rst files, and has a separate index.rst (with a toctree of its own)
+            referenced from the main index.</p>
+            <p>
+            See the documentation for Sphinx and reStructuredText on what you can do with them. In particular, the Sphinx
+            reStructuredText Primer is a good place to get started with reStructuredText. There are also some Sphinx specific markup
+            constructs.
+            </p>
+        </section>
+
+        <section class="main-section" id="Specific_guidelines_for_the_kernel_documentation">
+            <header>
+                Specific guidelines for the kernel documentation
+            </header>
+                <p>Here are some specific guidelines for the kernel documentation:</p>
+                <ul>
+                    <li>Please don't go overboard with reStructuredText markup. Keep it simple. For the most part the documentation should be
+                    plain text with just enough consistency in formatting that it can be converted to other formats.</li>
+                    <li>Please keep the formatting changes minimal when converting existing documentation to reStructuredText.</li>
+                    <li>Also update the content, not just the formatting, when converting documentation.
+</li>
+                    <li>Please stick to this order of heading adornments:
+                        <ol>
+                            <li>= with overline for document title</li>
+                            <li>= for chapters</li>
+                            <li>- for sections</li>
+                            <li>~ for subsections</li>
+                        </ol>
+                        Although RST doesn't mandate a specific order ("Rather than imposing a fixed number and order of section title adornment
+                        styles, the order enforced will be the order as encountered."), having the higher levels the same overall makes it
+                        easier to follow the documents.
+                    </li>
+                    <li>For inserting fixed width text blocks (for code examples, use case examples, etc.), use :: for anything that doesn't
+                    really benefit from syntax highlighting, especially short snippets. Use .. code-block:: <language> for longer code
+                        blocks that benefit from highlighting. For a short snippet of code embedded in the text, use ``.</li>
+                </ul>
+            
+        </section>
+
+        <section class="main-section" id="the_c_domain">
+            <header>                
+                    the c domain
+            </header>
+            <p>The Sphinx C Domain (name c) is suited for documentation of C API. E.g. a function prototype:</p>
+            <pre>
+                <code>
+        .. c:function:: int ioctl( int fd, int request )
+                </code>
+            </pre>
+            <p>The C domain of the kernel-doc has some additional features. E.g. you can rename the reference name of a function with a
+            common name like open or ioctl:</p>
+            <pre>
+                <code>
+        .. c:function:: int ioctl( int fd, int request )
+            :name: VIDIOC_LOG_STATUS
+                </code>
+            </pre>
+            <p>The func-name (e.g. ioctl) remains in the output but the ref-name changed from ioctl to VIDIOC_LOG_STATUS. The index
+            entry for this function is also changed to VIDIOC_LOG_STATUS.
+            
+            Please note that there is no need to use c:func: to generate cross references to function documentation. Due to some
+            Sphinx extension magic, the documentation build system will automatically turn a reference to function() into a cross
+            reference if an index entry for the given function name exists. If you see c:func: use in a kernel document, please feel
+            free to remove it.</p>
+        </section>
+
+        <section class="main-section" id="Reference">
+            <header>
+                    Reference
+            </header>
+            <p>for more information please visited this link <a
+                    href="https://www.kernel.org/doc/html/latest/doc-guide/sphinx.html" target="_blank"
+                    rel="noopener noreferrer">https://www.kernel.org</a></p>
+        </section>
+        <!-- end of content -->
+    </main>
+
+</body>
+</html>

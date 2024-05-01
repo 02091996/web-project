@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(246, 248, 250);
+    padding-top: 75px;
+}
+
+/* START STYLE HEADER */
+#header{
+    top: 0;
+    z-index: 99;
+    width: 100%;
+    position: fixed;
+    height: 75px;
+    background-color:rgb(17, 22, 50);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+}
+#nav-bar ul{
+    list-style-type: none;
+    margin-right: 10px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    min-width: 200px;
+}
+.nav-link a{
+    color: white;
+    text-decoration: none;
+}
+.nav-link a:hover{
+    color: red;
+}
+/* END STYLE HEADER */
+
+
+/* START PRODUCT */
+#Product{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(90px,200px));
+    grid-template-rows: 1fr;
+    gap: 10px;
+    justify-content: center;
+}
+
+#Product img{
+    border-radius: 50px;
+    box-shadow: 2px 2px 15px 1px rgb(133, 131, 131);
+    width: 100px;
+    height: 100px;
+    object-fit:contain;
+    transition: ease-in-out .5s;
+}
+
+#Product img:hover{
+    box-shadow: 1px 1px 1px 1px white;
+    transform: scale(1.2);    
+}
+/* END PRODUCT */
+
+
+/* START STYLE SUBSCRIBE  */
+#subscribe{
+    margin: 20px auto;
+    background-color: rgb(47, 89, 228);
+    max-width: 700px;
+    border-radius: 10px;
+    padding: 10px;
+    height: 120px;
+    text-align: center;
+    color: white;
+    line-height: 30px;
+}
+
+#subscribe hr{
+    border: 1px solid black;
+    width: 50%;
+    margin: 5px auto;
+}
+
+#subscribe #email{
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+#subscribe #submit{
+    padding: 4px;
+    border-radius: 5px;
+    border: none;
+    background-color: blue;
+    color: white;
+    font-weight: 700;
+
+}
+/* END STYLE SUBSCRIBE */
+
+/* START STYLE VIDEO */
+video {
+    margin-top: 20px;
+    width: 100%;
+    height: 500px;
+}
+/* END STYLE VIDEO */
+
+/* STARTING STYLE PRICE */
+#Price{
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(90px,200px));
+    grid-template-rows: 1fr;
+    gap: 10px;
+    justify-content: center;
+}
+
+.card-phone{
+    width: 160px;
+    height: 280px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.card-img img{
+    width: 158px;
+    height: 150px;
+    border-radius: 5px;
+}
+.card-phone p{
+    font-size: 0.9rem;
+    margin-left: 10px;
+    text-transform: capitalize;
+}
+.color-button{
+    margin: 5px 0 0 10px;
+    border: none;
+    padding: 1.5px;
+    background-color: rgb(211, 211, 211);
+}
+h3{
+    margin-left: 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#diskon{
+    margin-left: 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+#diskon span{
+    text-decoration: line-through;
+}
+#diskon button{
+    border: none;
+    color: red;
+    font-weight: 600;
+    background-color: rgb(224, 166, 166);
+}
+/* end STYLE PRICE */
+
+
+/* starting responsive style */
+@media screen and (max-width: 600px){
+    #Product{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(90px,100px));
+    grid-template-rows: 3fr;
+    justify-content: center;
+    }
+}
+
+@media screen and (max-width: 1000px){ 
+    #Price{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(90px,200px));
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    justify-content: center;
+    }
+}
+
+@media screen and (max-width: 500px){
+    #Price{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(90px,200px));
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    justify-content: center;
+    }
+}

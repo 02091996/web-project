@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    width: 600px;
+    background-color: #dedede;
+    display: flex;
+    flex-direction: column;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+pre{
+    text-align: justify;
+    margin-left: -50px;
+    background-color:rgb(35, 34, 34);
+    color: white;
+    font-weight: bold;
+}
+code{
+    white-space:inherit;
+    word-wrap:normal;
+}
+a{
+    text-decoration: underline;
+    color: black;
+}
+
+.main-section{
+    margin: 20px 0 10px 0;
+}
+.main-section header{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#navbar{
+    padding: 10px 10px 0 10px;
+    width: 100%;
+    height: 220px;
+    z-index: 1;
+    background-color: rgb(198, 198, 198);
+    border-bottom: 2px solid black;
+    text-align: center;
+    overflow-y: scroll;
+}
+
+#main-doc{
+    padding: 10px;
+
+}
+
+#navbar li{
+    list-style-type: none;
+    margin-top: 15px;
+    padding: 10px 0;
+    border-bottom: 2px solid black;
+}
+#navbar li:first-child{
+    border-top: 2px solid black;
+    margin-top: 15px;
+}
+
+#navbar a{
+    text-decoration: none;
+    display: block;
+    transition: text-indent 0.4s ease-in-out;
+}
+
+#navbar a:hover{
+    color: red;
+    text-indent: 1.2em;
+}
+
+#sphinx-install a{
+    text-decoration: underline;
+}
+
+#sphinx_build pre{
+    margin-top: 10px;
+}
+#sphinx_build code a{
+    color: white;
+}
+
+#writing_documentation ol{
+    margin-left: 25px;
+}
+
+#writing_documentation p:nth-child(n+1){
+    display: block;
+    margin-top: 10px;
+}
+#specific_guidelines ul {
+    margin-left: 20px;
+    line-height: 25px;
+}
+#specific_guidelines ol{
+    margin-left: 25px;
+}
+
+#the_c_domain pre{
+    margin-top: 15px; margin-bottom: 10px;
+}
+
+#Reference{
+    padding: 15px;
+}
+#Reference a{
+    color: red;
+    font-style: italic;
+}
+
+@media only screen and (min-width: 600px) {
+    body{
+        flex-direction: row;
+        width: 100%;
+    }
+    #navbar{
+        position: fixed;
+        width: 250px;
+        overflow: visible;
+        height: 100vh;
+        border-bottom: none;
+        border-right: 2px solid #000;
+    }
+    #navbar ul{
+        margin-top: 50px;
+    }
+    #main-doc{
+        margin-left: 250px;
+    }
+    
+}

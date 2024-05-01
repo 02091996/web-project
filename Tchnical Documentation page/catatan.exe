@@ -1,0 +1,22 @@
+font-family : system-ui
+
+//penulisan code pada sebuah html
+<pre>
+<code></code>
+</pre> 
+
+//transition when hover
+a:hover{
+    text-indent: 2px;
+}
+
+//pada code
+code{
+    white-space;
+    word-break;
+    word-wrap;
+}
+
+html{
+    scroll-behaviur:smooth;
+}
